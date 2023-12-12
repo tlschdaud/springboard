@@ -35,7 +35,7 @@ public class JoinValidator implements Validator, MobileValidator, PasswordValida
         String userPw = joinForm.getUserPw();
         String userPwRe = joinForm.getUserPwRe();
         String mobile = joinForm.getMobile();
-        boolean[] agrees = joinForm.getAgrees(); // 필수 약관
+        boolean[] agrees = joinForm.getAgrees(); // 필수 약관.
 
         //1. 아이디 중복 여부
         if (userId != null && !userId.isBlank() && memberRepository.exists(userId)) {
