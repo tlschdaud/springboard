@@ -1,5 +1,6 @@
 package org.koreait.controllers.members;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.koreait.models.member.MemberSaveService;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,9 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    public String joinPs(JoinForm joinForm, Errors errors) {
+    public String joinPs(@Valid JoinForm joinForm, Errors errors) {
+
+        joinValidator.validate(joinForm, errors);
 
         if (errors.hasErrors()) {
             return "/member/join";
