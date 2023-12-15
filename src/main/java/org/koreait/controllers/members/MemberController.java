@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 public class MemberController {
     private final MemberSaveService saveService;
+    private final JoinValidator joinValidator;
 
     @GetMapping("/join")
     public String join() {
