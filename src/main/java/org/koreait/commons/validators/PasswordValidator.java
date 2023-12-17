@@ -1,5 +1,7 @@
 package org.koreait.commons.validators;
 
+import java.util.regex.Pattern;
+
 public interface PasswordValidator {
     /**
     * 비밀번호 복잡성 체크 - 알파벳 체크
@@ -12,12 +14,14 @@ public interface PasswordValidator {
 
     default boolean alphaCheck(String password, boolean caseIncentive) {
         if(caseIncentive) { // 대소문자 구분없이 체크
-
-            return password.matches("[a-zA-Z]+");
+            Pattern pattern = Pattern.compile("[a-z]+", Pattern.CASE_INSENSITIVE);
+            return pattern.matcher(password).find();
         }
 
         // 대문자, 소문자 각각 체크
-            return password.matches("[a-z]+") && password.matches("[A-Z]+");
+            Pattern pattern1 = Pattern.compile("[a-z]+");
+            Pattern pattern2 = Pattern.compile("[A-Z]+");
+            return pattern1.matcher(password).find() && pattern2.matcher(password).find();
     }
 
     /**
@@ -36,6 +40,6 @@ public interface PasswordValidator {
      */
     default boolean specialCharsCheck(String password) {
         
-        return password.matches("[`~!@#$%^&*()-_+=]+");
+        return password.matches("[`~!@#$%\\^&\\*()-_+=]+");
     }
 }

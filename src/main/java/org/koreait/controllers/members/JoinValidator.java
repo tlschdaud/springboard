@@ -43,15 +43,14 @@ public class JoinValidator implements Validator, MobileValidator, PasswordValida
         }
 
         // 2. 비밀번호 복잡성 체크(알파벳(대문자, 소문자), 숫자, 특수문자))
-        /**
          if (userPw != null && !userPw.isBlank()
-         && (!alphaCheck(userPw, false)
-         || !numberCheck(userPw)
-         || !specialCharsCheck(userPw))) {
+            && (!alphaCheck(userPw, false)
+                || !numberCheck(userPw)
+                || !specialCharsCheck(userPw))) {
 
-         errors.rejectValue("userPw", "Validation.complexity.password");
+            errors.rejectValue("userPw", "Validation.complexity.password");
          }
-         */
+
         // 3. 비밀번호와 비밀번호 확인 일치
         if (userPw != null && !userPw.isBlank()
                 && userPwRe != null && !userPwRe.isBlank() && !userPw.equals(userPwRe)) {
