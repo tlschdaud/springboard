@@ -1,14 +1,12 @@
 package org.koreait.controllers.members;
 
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@Builder
+@Data @Builder
 @NoArgsConstructor @AllArgsConstructor
 public class JoinForm {
     @NotBlank
@@ -27,7 +25,6 @@ public class JoinForm {
 
     @NotBlank @Email
     private String email;
-
     private String mobile;
 
     private boolean[] agrees;
