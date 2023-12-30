@@ -8,17 +8,27 @@ import java.util.ResourceBundle;
  * 공통 예외
  * */
 public class CommonException extends RuntimeException{
-    private static ResourceBundle bundleValidation;
-    private static ResourceBundle bundleError;
+    protected static ResourceBundle bundleValidation;
+    protected static ResourceBundle bundleError;
 
     protected HttpStatus httpStatus;
+
     static {
         bundleValidation = ResourceBundle.getBundle("messages.validations");
         bundleError = ResourceBundle.getBundle("message.errors");
     }
 
+    public CommonException(String message) {
+        super(message);
+        httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+    }
+
     public CommonException(String message, HttpStatus httpStatus) {
         super(message);
         this.httpStatus = httpStatus;
+    }
+
+    public HttpStatus getSatatus() {
+        return httpStatus;
     }
 }
