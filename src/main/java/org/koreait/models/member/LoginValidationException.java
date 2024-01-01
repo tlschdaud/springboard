@@ -18,4 +18,8 @@ public class LoginValidationException extends CommonException {
         this(code);
         this.field = field;
     }
+
+    public String getField() {
+        return field;
+    }
 }
