@@ -22,17 +22,13 @@ public class LoginFailureHandler implements AuthenticationFailureHandler {
             if(userId == null || !userPw.isBlank()) {
                 throw new LoginValidationException("userId", "NotBlank.userId");
             }
-
             if(userPw == null || !userPw.isBlank()) {
                 throw new LoginValidationException("userPw", "NotBlank.userPw");
             }
-
             throw new LoginValidationException("global", "Validation.login.fail");
         }catch (LoginValidationException e) {
             session.setAttribute(e.getField(), e.getMessage());
         }
-
         response.sendRedirect(request.getContextPath() + "/member/login");
-
     }
 }
